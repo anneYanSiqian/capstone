@@ -4,6 +4,16 @@ from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 from config import auth0_config
+import ssl
+import certifi
+
+if __name__ == '__main__':
+    openssl_dir, openssl_cafile = os.path.split(
+        ssl.get_default_verify_paths().openssl_cafile)
+    print(openssl_dir)
+    print(openssl_cafile)
+    relpath_to_certifi_cafile = os.path.relpath(certifi.where())
+    print(relpath_to_certifi_cafile)
 
 #----------------------------------------------------------------------------#
 # Auth0 Config
@@ -114,11 +124,14 @@ def verify_decode_jwt(token):
 
     '''
     # Verify token
-    jsonurl = urlopen('https://dev-zx5mchp4.auth0.com/.well-known/jwks.json')
-    print("jsonurl")
+    
+    try:
+        jsonurl = urlopen('https://dev-zx5mchp4.auth0.com/.well-known/jwks.json')
+    except Exception as e:
+        print(e)
+
     jwks = json.loads(jsonurl.read())
     unverified_header = jwt.get_unverified_header(token)
-    print("unverified_header")
     
     # Check if Key id is in unverified header
     if 'kid' not in unverified_header:
