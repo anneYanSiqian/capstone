@@ -10,9 +10,9 @@ from datetime import date
 
 # Use Production Database.
 # If run locally, key does not exist, so use locally set database instead.
-# database_path = "postgres://sxvwypvcewiwft:71a5b4af53ca61d9936511c46f96b61fa9d3b9b589f87be97bb49cc98d66aab5@ec2-52-87-58-157.compute-1.amazonaws.com:5432/db28be7l9velkt"
-database_name = "trivia"
-database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+database_path = "postgres://sxvwypvcewiwft:71a5b4af53ca61d9936511c46f96b61fa9d3b9b589f87be97bb49cc98d66aab5@ec2-52-87-58-157.compute-1.amazonaws.com:5432/db28be7l9velkt"
+# database_name = "trivia"
+# database_path = "postgres://{}/{}".format('localhost:5432', database_name)
 db = SQLAlchemy()
 
 def setup_db(app, database_path=database_path):

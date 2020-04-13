@@ -4,16 +4,6 @@ from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 from config import auth0_config
-import ssl
-import certifi
-
-if __name__ == '__main__':
-    openssl_dir, openssl_cafile = os.path.split(
-        ssl.get_default_verify_paths().openssl_cafile)
-    print(openssl_dir)
-    print(openssl_cafile)
-    relpath_to_certifi_cafile = os.path.relpath(certifi.where())
-    print(relpath_to_certifi_cafile)
 
 #----------------------------------------------------------------------------#
 # Auth0 Config
